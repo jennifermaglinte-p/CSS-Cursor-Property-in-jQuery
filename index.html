@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Cursor Property in jQuery</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #000000, #0a1f44);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 20px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+        color: #0a1f44;
+        margin-bottom: 25px;
+        font-weight: bold;
+    }
+
+    img {
+        width: 280px;
+        height: auto;
+        border-radius: 15px;
+        border: 3px solid #0a1f44;
+        transition: 0.3s;
+    }
+
+    img:hover {
+        transform: scale(1.03);
+    }
+
+    .count {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #0a1f44;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+    <h2>CSS Cursor Property in jQuery</h2>
+
+    <img src="mypicture.jpg" id="profilePic">
+
+    <div class="count">
+        Clicked: <span id="clickCount">0</span>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function(){
+
+        let count = 0;
+
+        // Hover event
+        $("#profilePic").hover(function(){
+            if(count < 5){
+                $(this).css("cursor", "crosshair");
+            } else {
+                $(this).css("cursor", "wait");
+            }
+        });
+
+        // Click event
+        $("#profilePic").click(function(){
+
+            count++;
+
+            if(count == 5){
+                $(this).css("cursor", "wait");
+            }
+
+            if(count > 5){
+                count = 1;
+                $(this).css("cursor", "crosshair");
+            }
+
+            $("#clickCount").text(count);
+        });
+
+    });
+</script>
+
+</body>
+</html>
